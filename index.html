@@ -6,7 +6,9 @@
 <title>Sinuca — 4 Jogadores</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin:0; padding:0; box-sizing:border-box; @media screen and (max-width: 768px) and (orientation: portrait) {
+  body > * { display: none; }
+} }
 
 body {
   background: #0a0500;
