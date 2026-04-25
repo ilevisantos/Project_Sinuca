@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Sinuca da tia</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -181,8 +181,15 @@ h1 {
   box-shadow: 0 0 28px rgba(232,201,126,0.15);
 }
 
-@media screen and (max-width: 768px) and (orientation: portrait) {
-  body > * { display: none; }
+@media screen and (max-width: 768px) {
+  canvas {
+    width: 100vw !important;
+    height: auto !important;
+  }
+  h1 { font-size: 1rem; letter-spacing: 4px; }
+  #scoreboard { gap: 8px; }
+  .pc { padding: 6px 10px; }
+  .pc-score { font-size: 1.4rem; }
 }
 </style>
 </head>
@@ -299,7 +306,9 @@ document.querySelectorAll('.popt').forEach(btn => {
     numPlayers = parseInt(btn.dataset.n);
   });
 });
-
+if (screen.orientation && screen.orientation.lock) {
+  screen.orientation.lock('landscape').catch(() => {});
+}
 document.getElementById('menu-start').addEventListener('click', () => {
   menuOverlay.style.display = 'none';
   loadSounds();
